@@ -83,7 +83,6 @@ def digit_hack():
 	# execute every moves
 	print(moves)
 	for key in moves:
-		break
 		keyboard.press_and_release(key)
 		sleep(0.025)
 
