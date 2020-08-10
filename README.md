@@ -16,3 +16,6 @@
 * Resize and cut it
 * Compare the fingerprints parts with the big fingerprints
 * Determine which keys to press
+
+# Problems you could have
+* Wrong keys: the script work with `zqsd` (azerty keyboard), to change it, go in the script and change the lines `100`, `103`, `108` and `111` and set `wasd` instead
