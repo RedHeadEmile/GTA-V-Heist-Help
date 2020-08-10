@@ -18,4 +18,4 @@
 * Determine which keys to press
 
 # Problems you could have
-* Wrong keys: the script work with `zqsd` (azerty keyboard), to change it, go in the script and change the lines `70`, `73`, `78` and `81` and set `wasd` instead
+* Wrong keys: the script work with `zqsd` (azerty keyboard), to change it, open the script and change `zqsd` to `wasd` near line `70`

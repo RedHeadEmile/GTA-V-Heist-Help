@@ -7,6 +7,8 @@ import keyboard # need this lib instead of pynput for input because GTAV don't w
 from time import sleep
 from datetime import datetime # optional, just for console printing
 
+bbox = (0, 0, 1920, 1080) # for the screenshot
+
 tofind = (950, 155, 1335, 685) # big digit box
 
 # parts of digits to check
@@ -31,12 +33,6 @@ def is_in(img, subimg):
 	return False
 
 
-bbox = (0, 0, 1920, 1080)
-def screenshot():
-	"""Take a screenshot and return a pil image"""
-	return ImageGrab.grab(bbox)
-
-
 digit_hack_started = False # used to prevent the function to be executed multiple times at once
 def digit_hack():
 	"""All the process to do the 'hack'"""
@@ -48,7 +44,7 @@ def digit_hack():
 
 	digit_hack_started = True
 	
-	im = screenshot()
+	im = ImageGrab.grab(bbox) # take a screnshot
 
 	sub0_ = im.crop(tofind); # cutting the image
 	sub0 = cv2.cvtColor(np.array(sub0_.resize((round(sub0_.size[0] * 0.77), round(sub0_.size[1] * 0.77)))), cv2.COLOR_BGR2GRAY) # need to resize the image because fingerprints parts is smaller than the image + need gray image to do the matchTemplate
