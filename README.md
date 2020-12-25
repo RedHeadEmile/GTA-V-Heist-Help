@@ -7,7 +7,8 @@
 
 # How to use it ?
 * Be in the fingerprints hack screen and be able to move
-* Press F5
+* Press F5 for casino's fingerprints
+* Press F6 for cayo perico's fingerprints
 * Enjoy
 * By pressing F7 you will close the program
 
@@ -18,4 +19,4 @@
 * Determine which keys to press
 
 # Problems you could have
-* Wrong keys: the script work with `zqsd` (azerty keyboard), to change it, open the script and change `zqsd` to `wasd` near line `70`
+* Wrong keys: the script work with `zqsd` (azerty keyboard), to change it, open the script and change `zqsd` to `wasd`
