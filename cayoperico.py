@@ -58,16 +58,21 @@ def digit_hack():
 	for i in range(len(scan)):
 		# get the index of the litle part on  the left
 		j = index(cv2.cvtColor(np.array(im.crop(scan[i])), cv2.COLOR_BGR2GRAY), parts)
-		while j != i: # the index must be the same as 'i', then move to it so
-			if j > i:
-				moves.append("Q")
-				j -= 1
-			else:
-				moves.append("D")
-				j += 1
+
+		path = min(i - j, i - j - 8, i - j + 8, key = abs)
+		if path != 0:
+			key = "D" if path > 0 else "Q"
+			for i in range(abs(path)):
+				moves.append(key)
 
 		moves.append("S")
 
+	while moves[-1] == "S":
+		del moves[-1]
+
+	print("Calculate in ", datetime.now() - start)
+
+	# execute every moves
 	print(moves)
 	for key in moves:
 		keyboard.press_and_release(key)
