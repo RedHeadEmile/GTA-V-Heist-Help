@@ -20,3 +20,5 @@
 
 # Problems you could have
 * Wrong keys: the script work with `zqsd` (azerty keyboard), to change it, open the script and change `zqsd` to `wasd`
+
+[Example](https://youtu.be/NDkrM6sgaAY)
