@@ -15,15 +15,19 @@ def on_press(key):
 	except:
 		k = key.name
 
-	if k == "f7":
+	if k == "f8":
 		return False
 
 	elif k == "f5":
 		thread = Thread(target = casinoheist.digit_hack)
-		thread.start() # run it async so can kill the process anyway with F7
+		thread.start() # run an async task so it can killed by pressing F8
 
 	elif k == "f6":
 		thread = Thread(target = cayoperico.digit_hack)
+		thread.start()
+
+	elif k == "f7":
+		thread = Thread(target = casinoheist.hacking_machine)
 		thread.start()
 
 

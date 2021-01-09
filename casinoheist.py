@@ -87,3 +87,46 @@ def digit_hack():
 	print("Broke in ", datetime.now() - start, "\n---------------------")
 
 	digit_hack_started = False
+
+
+def calculate_brightness(image):
+    greyscale_image = image.convert('L')
+    histogram = greyscale_image.histogram()
+    pixels = sum(histogram)
+    brightness = scale = len(histogram)
+
+    for index in range(0, scale):
+        ratio = histogram[index] / pixels
+        brightness += ratio * (-scale + index)
+
+    return 1 if brightness == 255 else brightness / scale
+
+
+circles = [[(480, 320, 480 + 40, 320 + 40), (585, 320, 585 + 40, 320 + 40), (690, 320, 690 + 40, 320 + 40), (795, 320, 795 + 40, 320 + 40), (910, 320, 910 + 40, 320 + 40), (1015, 320, 1015 + 40, 320 + 40)],
+[(480, 425, 480 + 40, 425 + 40), (585, 425, 585 + 40, 425 + 40), (690, 425, 690 + 40, 425 + 40), (795, 425, 795 + 40, 425 + 40), (910, 425, 910 + 40, 425 + 40), (1015, 425, 1015 + 40, 425 + 40)],
+[(480, 540, 480 + 40, 540 + 40), (585, 540, 585 + 40, 540 + 40), (690, 540, 690 + 40, 540 + 40), (795, 540, 795 + 40, 540 + 40), (910, 540, 910 + 40, 540 + 40), (1015, 540, 1015 + 40, 540 + 40)],
+[(480, 640, 480 + 40, 640 + 40), (585, 640, 585 + 40, 640 + 40), (690, 640, 690 + 40, 640 + 40), (795, 640, 795 + 40, 640 + 40), (910, 640, 910 + 40, 640 + 40), (1015, 640, 1015 + 40, 640 + 40)],
+[(480, 750, 480 + 40, 750 + 40), (585, 750, 585 + 40, 750 + 40), (690, 750, 690 + 40, 750 + 40), (795, 750, 795 + 40, 750 + 40), (910, 750, 910 + 40, 750 + 40), (1015, 750, 1015 + 40, 750 + 40)]]
+
+hacking_machine_started = False
+def hacking_machine():
+
+	global hacking_machine_started
+	if hacking_machine_started:
+		return
+
+	hacking_machine_started = True
+
+	img = ImageGrab.grab(bbox)
+
+	txt = "----------------\n"
+	for line in circles:
+		txt += "  "
+		for circle in line:
+			txt += "o " if calculate_brightness(img.crop(circle)) > 0.3 else "- "
+		txt += "\n"
+	txt += "----------------"
+
+	print(txt if txt.count("o") == 6 else "Nothing detected")
+
+	hacking_machine_started = False
